@@ -4,10 +4,10 @@
 --  For more options, you can see `:help option-list`
 
 -- Make line numbers default
-vim.o.number = true
+-- vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -86,5 +86,11 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.bo.shiftwidth = 2
   end,
 })
+
+-- 切换相对/绝对行号
+vim.keymap.set('n', '<leader>rn', function()
+  vim.o.relativenumber = not vim.opt.relativenumber:get()
+  vim.o.number = not vim.opt.number:get()
+end, { desc = 'Toggle relative/absolute line numbers' })
 
 -- vim: ts=2 sts=2 sw=2 et
