@@ -71,4 +71,14 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+
+
+-- 缩进配置
+vim.o.shiftwidth = 2      -- 关键：缩进的列数
+vim.o.tabstop = 2         -- Tab 的显示宽度（不参与计算时也保持一致）
+vim.o.softtabstop = 2     -- 插入模式下 <Tab> 的感知宽度
+vim.o.expandtab = true    -- 实际插入空格
+
+
+
 -- vim: ts=2 sts=2 sw=2 et
