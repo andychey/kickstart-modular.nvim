@@ -71,14 +71,20 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
-
-
 -- 缩进配置
-vim.o.shiftwidth = 2      -- 关键：缩进的列数
-vim.o.tabstop = 2         -- Tab 的显示宽度（不参与计算时也保持一致）
-vim.o.softtabstop = 2     -- 插入模式下 <Tab> 的感知宽度
-vim.o.expandtab = true    -- 实际插入空格
-
-
+-- 默认 4 个空格
+vim.o.tabstop = 4 -- Tab 的显示宽度（不参与计算时也保持一致）
+vim.o.softtabstop = 4 -- 插入模式下 <Tab> 的感知宽度
+vim.o.shiftwidth = 4 -- 关键：缩进的列数
+-- vim.o.expandtab = true -- 实际插入空格
+-- 特殊文件 2 个空格
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'lua', 'nu' },
+  callback = function()
+    vim.bo.tabstop = 2
+    vim.bo.softtabstop = 2
+    vim.bo.shiftwidth = 2
+  end,
+})
 
 -- vim: ts=2 sts=2 sw=2 et
